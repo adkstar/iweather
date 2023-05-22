@@ -1,5 +1,6 @@
 import { WEEKDAYS } from "@/constants";
 import TableRow from "./TableRow";
+import ColorBadge from "./ColorBadge";
 
 const WeatherTable = ({
   grouped,
@@ -40,7 +41,10 @@ const WeatherTable = ({
                       key={index}
                       className="px-6 py-4"
                     >
-                      {item.date}
+                      <span className="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2 py-0.5 rounded dark:bg-gray-700 dark:text-gray-400 border border-gray-500">
+                        {" "}
+                        {item.date}
+                      </span>
                     </td>
                   );
                 })}
@@ -80,7 +84,9 @@ const WeatherTable = ({
                       key={index}
                       className="px-6 py-4"
                     >
-                      {item.high}
+                      {/* {item.high} */}
+
+                      <ColorBadge amount={item.high} />
                     </td>
                   );
                 })}
@@ -100,7 +106,8 @@ const WeatherTable = ({
                       key={index}
                       className="px-6 py-4"
                     >
-                      {item.low}
+                      {/* {item.low} */}
+                      <ColorBadge amount={item.low} low={true} />
                     </td>
                   );
                 })}

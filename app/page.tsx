@@ -23,7 +23,7 @@ export default function Home() {
       setError("Please enter an input");
       setTimeout(() => {
         setError("");
-      }, 5000);
+      }, 3000);
 
       return;
     }
@@ -150,15 +150,23 @@ export default function Home() {
           </div>
         </form>
 
-        {error && <div className="font-bold text-red-500 text-lg">{error}</div>}
+        {error && (
+          <div
+            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            role="alert"
+          >
+            <span className="font-medium">Error!</span> {error}
+          </div>
+        )}
 
         {loading && !error && !grouped && (
           <div className="font-bold text-lg">Loading results...</div>
         )}
 
         {locationName && grouped && (
-          <div className="font-bold text-xl">
-            Showing results for {locationName}
+          <div className="font-bold text-lg">
+            <span className="text-black/60">Showing results for: </span>{" "}
+            <span className="text text-blue-800">{locationName}</span>
           </div>
         )}
 
@@ -170,8 +178,9 @@ export default function Home() {
         )}
 
         {selectedDay && (
-          <div className="font-bold text-xl">
-            Showing data for {selectedDay}
+          <div className="font-bold text-lg">
+            <span className="text-black/60">Showing data for: </span>{" "}
+            <span className="text text-blue-800">{selectedDay}</span>
           </div>
         )}
         {selectedDay && grouped && (

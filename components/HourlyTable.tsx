@@ -24,7 +24,7 @@ const HourlyTable = ({ day, hourly }: { day: string; hourly: any[] }) => {
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="max-h-[400px] overflow-y-scroll">
           {hourly &&
             hourly
               .sort((a: any, b: any) => a.startTime - b.startTime)
