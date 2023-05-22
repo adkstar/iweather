@@ -1,12 +1,12 @@
-import {XMLParser} from 'fast-xml-parser';
+import { XMLParser } from "fast-xml-parser";
 
-export function parseForecast(xmlText) {
+export function parseForecast(xmlText: any) {
   const raw = parseToJsObj(xmlText);
   const nice = extractParameters(raw);
   return nice;
-};
+}
 
-export function parseToJsObj(xmlText) {
+export function parseToJsObj(xmlText: any) {
   let parseOptions = {
     ignoreAttributes: false,
     parseAttributeValue: true,
@@ -18,10 +18,10 @@ export function parseToJsObj(xmlText) {
   return jsObj;
 }
 
-export function extractParameters(forecast) {
+export function extractParameters(forecast: any) {
   const startTimes = forecast.dwml.data["time-layout"]["start-valid-time"];
   const endTimes = forecast.dwml.data["time-layout"]["end-valid-time"];
-  let output = [];
+  let output: any[] = [];
 
   for (let index = 0; index < startTimes.length; index++) {
     output.push({
