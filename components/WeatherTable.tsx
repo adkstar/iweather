@@ -1,7 +1,13 @@
 import { WEEKDAYS } from "@/constants";
 import TableRow from "./TableRow";
 
-const WeatherTable = ({ grouped }: { grouped: any }) => {
+const WeatherTable = ({
+  grouped,
+  setSelectedDay,
+}: {
+  grouped: any;
+  setSelectedDay: any;
+}) => {
   return (
     <div className="relative font-mono w-full overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -29,7 +35,11 @@ const WeatherTable = ({ grouped }: { grouped: any }) => {
                 .sort((a: any, b: any) => a.startTime - b.startTime)
                 .map((item: any, index) => {
                   return (
-                    <td key={index} className="px-6 py-4">
+                    <td
+                      onClick={() => setSelectedDay(item.day)}
+                      key={index}
+                      className="px-6 py-4"
+                    >
                       {item.date}
                     </td>
                   );
@@ -45,7 +55,11 @@ const WeatherTable = ({ grouped }: { grouped: any }) => {
                 .sort((a: any, b: any) => a.startTime - b.startTime)
                 .map((item: any, index) => {
                   return (
-                    <td key={index} className="px-6 py-4">
+                    <td
+                      onClick={() => setSelectedDay(item.day)}
+                      key={index}
+                      className="px-6 py-4"
+                    >
                       {item.day}
                     </td>
                   );
@@ -61,7 +75,11 @@ const WeatherTable = ({ grouped }: { grouped: any }) => {
                 .sort((a: any, b: any) => a.startTime - b.startTime)
                 .map((item: any, index) => {
                   return (
-                    <td key={index} className="px-6 py-4">
+                    <td
+                      onClick={() => setSelectedDay(item.day)}
+                      key={index}
+                      className="px-6 py-4"
+                    >
                       {item.high}
                     </td>
                   );
@@ -77,7 +95,11 @@ const WeatherTable = ({ grouped }: { grouped: any }) => {
                 .sort((a: any, b: any) => a.startTime - b.startTime)
                 .map((item: any, index) => {
                   return (
-                    <td key={index} className="px-6 py-4">
+                    <td
+                      onClick={() => setSelectedDay(item.day)}
+                      key={index}
+                      className="px-6 py-4"
+                    >
                       {item.low}
                     </td>
                   );

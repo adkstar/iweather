@@ -1,6 +1,7 @@
 "use client";
 
 import WeatherTable from "@/components/WeatherTable";
+import HourlyTable from "@/components/HourlyTable";
 import { default as dayjs } from "dayjs";
 import { getLatLangByLocation } from "@/api/geocoding";
 import { getWeatherDataByLatLng } from "@/api/weather";
@@ -13,6 +14,7 @@ export default function Home() {
   const [locationName, setLocationName] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [selectedDay, setSelectedDay] = useState<string>("");
 
   const handleSearch = async () => {
     console.log("Handling search: ", search);
@@ -96,6 +98,11 @@ export default function Home() {
     setLoading(false);
   };
 
+  const handleCellClick = (day: string) => {
+    console.log("Day: ", day);
+    setSelectedDay(day);
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between  text-sm flex flex-col gap-10">
@@ -155,7 +162,21 @@ export default function Home() {
           </div>
         )}
 
-        {locationName && grouped && <WeatherTable grouped={grouped} />}
+        {locationName && grouped && (
+          <WeatherTable
+            setSelectedDay={(day: string) => handleCellClick(day)}
+            grouped={grouped}
+          />
+        )}
+
+        {selectedDay && (
+          <div className="font-medium text-lg">
+            Showing data for {selectedDay}
+          </div>
+        )}
+        {selectedDay && grouped && (
+          <HourlyTable day={selectedDay} hourly={grouped[selectedDay].hours} />
+        )}
       </div>
     </main>
   );
