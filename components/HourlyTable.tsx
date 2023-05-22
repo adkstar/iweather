@@ -37,9 +37,9 @@ const HourlyTable = ({ day, hourly }: { day: string; hourly: any[] }) => {
                     <td className="px-6 py-4 font-bold">
                       {dayjs(item?.startTime).format("HH")}
                     </td>
-                    <td className="px-6 py-4">{item.gust || "N/A"}</td>
-                    <td className="px-6 py-4">{item.sustained || "N/A"}</td>
                     <td className="px-6 py-4">{item.hourly || "N/A"}</td>
+                    <td className="px-6 py-4">{item.sustained || "N/A"}</td>
+                    <td className="px-6 py-4">{item.gust || "N/A"}</td>
                   </tr>
                 );
               })}

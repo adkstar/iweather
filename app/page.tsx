@@ -69,11 +69,11 @@ export default function Home() {
 
       const highTemp = Math.max(
         ...hoursOfDay.map((item: any) => {
-          return item["gust"];
+          return item["hourly"];
         })
       );
       const lowTemp = Math.min(
-        ...hoursOfDay.map((item: any) => item["sustained"])
+        ...hoursOfDay.map((item: any) => item["hourly"])
       );
 
       const dayOfWeek = WEEKDAYS[firstDate?.startTime.getDay()];
@@ -170,7 +170,7 @@ export default function Home() {
         )}
 
         {selectedDay && (
-          <div className="font-medium text-lg">
+          <div className="font-bold text-xl">
             Showing data for {selectedDay}
           </div>
         )}
